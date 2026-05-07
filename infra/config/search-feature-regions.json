@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "source_url": "https://learn.microsoft.com/en-us/azure/search/search-region-support",
+  "as_of": "2026-05-07",
+  "regions": {
+    "eastus2": {
+      "semantic_ranker": true,
+      "query_rewrite": true,
+      "notes": "Supported, but Microsoft documentation flags capacity constraints for new Search service creation and scaling."
+    },
+    "swedencentral": {
+      "semantic_ranker": true,
+      "query_rewrite": true,
+      "notes": "Supported in Microsoft documentation."
+    },
+    "southcentralus": {
+      "semantic_ranker": true,
+      "query_rewrite": true,
+      "notes": "Supported in Microsoft documentation."
+    },
+    "polandcentral": {
+      "semantic_ranker": true,
+      "query_rewrite": false,
+      "notes": "Semantic ranker support is documented; query rewrite support was not listed in the reviewed table."
+    }
+  }
+}

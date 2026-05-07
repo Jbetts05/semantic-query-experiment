@@ -1,0 +1,34 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "experimentName": {
+      "value": "semantic-query-experiment"
+    },
+    "location": {
+      "value": "swedencentral"
+    },
+    "searchServiceName": {
+      "value": "semqry-search-example"
+    },
+    "searchSku": {
+      "value": "basic"
+    },
+    "aiServicesName": {
+      "value": "semqry-ai-example"
+    },
+    "storageAccountName": {
+      "value": "semqrystorageexample"
+    },
+    "appInsightsName": {
+      "value": "semqry-appi-example"
+    },
+    "tags": {
+      "value": {
+        "project": "semantic-query-experiment",
+        "environment": "experiment",
+        "ttl": "set-before-deploy"
+      }
+    }
+  }
+}
