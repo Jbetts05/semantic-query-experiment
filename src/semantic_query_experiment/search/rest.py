@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
@@ -29,6 +30,9 @@ class SearchRestClient:
         actions = [{"@search.action": "mergeOrUpload", **document} for document in documents]
         return self._request("POST", f"/indexes/{index_name}/docs/index", {"value": actions})
 
+    def search_documents(self, index_name: str, payload: dict[str, object]) -> dict[str, object]:
+        return self._request("POST", f"/indexes/{index_name}/docs/search", payload)
+
     def _request(
         self,
         method: str,
@@ -47,11 +51,18 @@ class SearchRestClient:
                 "api-key": self.api_key,
             },
         )
-        try:
-            with urllib.request.urlopen(request, timeout=120) as response:
-                response_body = response.read().decode("utf-8")
-        except urllib.error.HTTPError as error:
-            detail = error.read().decode("utf-8", errors="replace")
-            raise RuntimeError(f"Search request failed: {error.code} {detail}") from error
+        response_body = ""
+        for attempt in range(5):
+            try:
+                with urllib.request.urlopen(request, timeout=120) as response:
+                    response_body = response.read().decode("utf-8")
+                    break
+            except urllib.error.HTTPError as error:
+                if error.code not in {429, 500, 502, 503, 504} or attempt == 4:
+                    detail = error.read().decode("utf-8", errors="replace")
+                    raise RuntimeError(f"Search request failed: {error.code} {detail}") from error
+                retry_after = error.headers.get("Retry-After")
+                delay = int(retry_after) if retry_after and retry_after.isdigit() else 2**attempt
+                time.sleep(delay)
         parsed: Any = json.loads(response_body) if response_body else {}
         return cast(dict[str, object], parsed) if isinstance(parsed, dict) else {}

@@ -8,7 +8,7 @@ The experiment base stack is deployed in one Azure environment.
 | Resource group | `rg-semantic-query-experiment` |
 | Region | `swedencentral` |
 | Azure AI Search | `semqry-search-556dc8sc` |
-| Search index | `semantic-query-gxp-8fcc73ca-azure-openai-text-embedding-3-large-3072` |
+| Search index | `semantic-query-gxp-8fcc73ca-azure-openai-text-embedding-3-large-text-embedding-3-large-2024-10-21-3072` |
 | Azure AI Services | `semqry-ai-556dc8sc` |
 | Storage account | `semqry556dc8sc` |
 | Application Insights | `semqry-appi-556dc8sc` |
