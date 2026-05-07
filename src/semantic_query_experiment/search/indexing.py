@@ -83,6 +83,29 @@ def validate_documents(
             raise ValueError(f"Document {document.get('id')} has invalid embedding provider")
 
 
+def validate_live_index_schema(
+    live_schema: dict[str, object],
+    *,
+    dimensions: int,
+) -> None:
+    fields = live_schema.get("fields")
+    if not isinstance(fields, list):
+        raise ValueError("Live Search index schema has no fields collection")
+    for field in cast(list[object], fields):
+        if not isinstance(field, dict):
+            continue
+        field_dict = cast(dict[str, object], field)
+        if field_dict.get("name") != "content_vector":
+            continue
+        vector_dimensions = field_dict.get("dimensions")
+        if vector_dimensions != dimensions:
+            raise ValueError(
+                f"Live content_vector dimensions {vector_dimensions} do not match {dimensions}"
+            )
+        return
+    raise ValueError("Live Search index schema has no content_vector field")
+
+
 def write_json(path: Path, payload: dict[str, object]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")

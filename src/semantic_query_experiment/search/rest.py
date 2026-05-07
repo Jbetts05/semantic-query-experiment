@@ -15,6 +15,9 @@ class SearchRestClient:
     api_key: str
     api_version: str
 
+    def get_index(self, index_name: str) -> dict[str, object]:
+        return self._request("GET", f"/indexes/{index_name}", None)
+
     def put_index(self, index_name: str, schema: dict[str, object]) -> dict[str, object]:
         return self._request("PUT", f"/indexes/{index_name}", schema)
 
@@ -26,10 +29,15 @@ class SearchRestClient:
         actions = [{"@search.action": "mergeOrUpload", **document} for document in documents]
         return self._request("POST", f"/indexes/{index_name}/docs/index", {"value": actions})
 
-    def _request(self, method: str, path: str, payload: dict[str, object]) -> dict[str, object]:
+    def _request(
+        self,
+        method: str,
+        path: str,
+        payload: dict[str, object] | None,
+    ) -> dict[str, object]:
         base = self.endpoint.rstrip("/")
         url = f"{base}{path}?api-version={self.api_version}"
-        body = json.dumps(payload).encode("utf-8")
+        body = json.dumps(payload).encode("utf-8") if payload is not None else None
         request = urllib.request.Request(
             url,
             data=body,
