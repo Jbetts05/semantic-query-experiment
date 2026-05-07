@@ -28,6 +28,7 @@ semqry-create-index = "semantic_query_experiment.commands.create_index:main"
 semqry-index-data = "semantic_query_experiment.commands.index_data:main"
 semqry-run = "semantic_query_experiment.commands.run_experiment:main"
 semqry-report = "semantic_query_experiment.commands.render_report:main"
+semqry-stats = "semantic_query_experiment.commands.statistical_summary:main"
 semqry-teardown = "semantic_query_experiment.commands.teardown:main"
 
 [dependency-groups]

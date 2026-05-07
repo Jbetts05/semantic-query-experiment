@@ -243,3 +243,25 @@ Every full run must emit a manifest containing:
 - query rewrite state.
 - experiment arm definitions.
 - generated artifact paths.
+
+## Post-run status and deviations
+
+This preregistration was created in commit
+`fbfda1673e8a72e56ced615b5427428c30ca58b1`. The last committed change touching
+this file before the full data-generation run was
+`6d6e179bf9c02e35d88727a1a398c644fc6b4b47`.
+
+The full run did not support the primary hypothesis. The deterministic
+`semantic_query` arm had a mean paired NDCG@10 delta of `-0.0237` against the
+identical-control arm, with a paired bootstrap 95% CI below zero. The secondary
+Wilcoxon signed-rank view is recorded in
+`reports/final/statistical-summary.json`.
+
+Documented deviations or incomplete secondary analyses:
+
+1. The LLM-rewritten `semantic_query` arm was not run.
+2. The preregistered latency warmup and p50/p95/p99 reporting protocol was not
+   followed; latency is reported only as an uncalibrated single-shot mean per
+   arm.
+3. Category-level deltas are exploratory point estimates and are not
+   multiple-comparison corrected.

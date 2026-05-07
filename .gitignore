@@ -41,6 +41,7 @@ reports/**
 !reports/final/report.md
 !reports/final/metrics.json
 !reports/final/statistical-summary.json
+!reports/final/run-manifest.json
 !reports/final/ndcg-at-10.svg
 !reports/data-generation/
 !reports/data-generation/corpus-manifest.json

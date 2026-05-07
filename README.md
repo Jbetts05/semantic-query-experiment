@@ -43,6 +43,9 @@ temporal queries.
 
 Start with:
 
+- [`docs/methodology.md`](docs/methodology.md) for the detailed technical
+  methodology: data generation, query construction, indexing, Search request
+  shapes, metrics, formulas, and reproduction commands.
 - [`reports/final/whitepaper.md`](reports/final/whitepaper.md) for the
   professional summary.
 - [`reports/final/report.md`](reports/final/report.md) for the concise generated
@@ -114,6 +117,8 @@ variables. Use `.env.example` as the template and never commit `.env`.
   and query rewrite state.
 - Reports must include raw artifacts, paired metrics, confidence intervals, and
   failure cases.
+- The detailed execution methodology is maintained in
+  [`docs/methodology.md`](docs/methodology.md).
 - The experiment preregistration is maintained in
   [`docs/preregistration.md`](docs/preregistration.md).
 - Current Azure resource names are recorded in

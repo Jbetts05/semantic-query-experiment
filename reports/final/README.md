@@ -13,18 +13,20 @@ whitepaper without committing transient caches or very large raw result dumps.
 | `report.md` | Machine-generated concise report from the final metrics bundle. |
 | `metrics.json` | Aggregate, category-level, and per-query metric summaries derived from the full run. |
 | `statistical-summary.json` | Auditable paired bootstrap CI, category counts, primary decision result, and preregistration commit references. |
+| `run-manifest.json` | Run ID, preregistration commits, Azure resources, commands, artifact paths, and run scale. |
 | `ndcg-at-10.svg` | NDCG@10 chart used by the report. |
 
 ## Supporting tracked artifacts
 
 | Artifact | Description |
 | --- | --- |
-| `..\data-generation\corpus-manifest.json` | Corpus-generation manifest and corpus-quality metadata. |
-| `..\index\index-schema.json` | Azure AI Search index schema used by the full run. |
-| `..\..\data\queries\query-suite.jsonl` | Query specs containing `search_text`, `semantic_intent`, category, filters, and expected IDs. |
-| `..\..\data\labels\relevance-labels.jsonl` | Generator-asserted graded relevance labels. |
-| `..\..\data\generated\source-facts.jsonl` | Structured facts used to generate the synthetic corpus and labels. |
-| `..\..\data\generated\corpus-chunks.jsonl` | Synthetic chunks uploaded to Azure AI Search. |
+| `../../docs/methodology.md` | Detailed methodology covering generation, query construction, indexing, search request shapes, metrics, formulas, and reproduction commands. |
+| `../data-generation/corpus-manifest.json` | Corpus-generation manifest and corpus-quality metadata. |
+| `../index/index-schema.json` | Azure AI Search index schema used by the full run. |
+| `../../data/queries/query-suite.jsonl` | Query specs containing `search_text`, `semantic_intent`, category, filters, and expected IDs. |
+| `../../data/labels/relevance-labels.jsonl` | Generator-asserted graded relevance labels. |
+| `../../data/generated/source-facts.jsonl` | Structured facts used to generate the synthetic corpus and labels. |
+| `../../data/generated/corpus-chunks.jsonl` | Synthetic chunks uploaded to Azure AI Search. |
 
 ## Raw full-run results
 

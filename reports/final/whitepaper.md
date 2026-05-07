@@ -62,6 +62,8 @@ The aggregate metrics show that semantic ranking was valuable in this corpus, wh
 
 Recall@50 parity across the hybrid semantic arms is expected by design because `semantic_query` changes the semantic ranking stage, not the L1 candidate retrieval request. The ranking difference appears after candidate generation: the separate semantic query lowered aggregate NDCG@10 and reduced Hit@1 from **0.3503** to **0.2564**, even though it improved deeper Hit@5 and Hit@10. In this run, the separate semantic intent was more likely to include the expected document somewhere in the top 10, but less likely to place it first.
 
+The identical quality metrics for `hybrid_semantic` and `hybrid_semantic_query_control` are also useful: they validate the control arm by showing that setting `semanticQuery` equal to the normal retrieval text behaved like conventional semantic ranking. Hybrid Recall@50 plateaued near **0.4505**, which is low for a three-label-per-query setup and likely reflects the intentionally dense hard-negative corpus where many other generated cases share product, site, jargon, and corrective-action language.
+
 The category table below is exploratory. It reports uncorrected point estimates by category; no multiple-comparison correction or per-category significance claim is made.
 
 | Category | n | Control NDCG@10 | Rule-based `semantic_query` NDCG@10 | Delta |
@@ -93,6 +95,8 @@ Third, **separate `semantic_query` can hurt when exact tokens carry the answer i
 This is a reproducible synthetic stress test, not a production benchmark. The corpus and labels were generated from structured facts, which makes the experiment auditable but also introduces circularity risk: the same synthetic design choices shape the documents, relevance labels, hard negatives, and query templates. A production decision should repeat the comparison on representative business content with human-reviewed relevance judgments.
 
 The vector-only and non-semantic hybrid baselines were weak in this run, especially vector-only Recall@50 at **0.1529** despite a 3,072-dimension `text-embedding-3-large` index. That is low enough that future work should treat vector configuration, query embedding strategy, and fusion weighting as open engineering questions rather than assuming this run represents an optimized vector baseline. Latency is reported as a mean only in this whitepaper; p50/p95/p99 latency should be added before operational capacity planning.
+
+The preregistered latency warmup and percentile protocol was not followed in this run, so latency values should be read as uncalibrated single-shot mean request timings rather than operational capacity measurements.
 
 The recommended next step is not to discard `semantic_query`, but to use it selectively. A production implementation should preserve identifiers and temporal constraints in semantic intent, gate the feature by query category, and evaluate an LLM-rewritten semantic-query arm separately from the rule-based template tested here. The result is useful precisely because it is mixed: it identifies where separate semantic intent can help, where it can hurt, and why professionals should validate the behavior rather than enabling it as a global default.
 

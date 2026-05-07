@@ -4,7 +4,8 @@
   "source_queries": "data/queries/query-suite.jsonl",
   "notes": [
     "Category-level deltas are exploratory point estimates and are not multiple-comparison corrected.",
-    "Primary bootstrap confidence interval was computed from per-query deltas in reports/final/metrics.json."
+    "Primary bootstrap confidence interval was computed from per-query deltas in reports/final/metrics.json.",
+    "Wilcoxon signed-rank uses a normal approximation with continuity correction and excludes zero deltas."
   ],
   "query_category_counts": {
     "acronym_expansion": 371,
@@ -30,9 +31,19 @@
       "upper": -0.013258986156984318,
       "method": "paired nonparametric bootstrap over query-level deltas"
     },
+    "wilcoxon_signed_rank": {
+      "method": "normal approximation with continuity correction; zero deltas excluded; statistic = min(W+, W-)",
+      "nonzero_count": 1888,
+      "positive_rank_sum": 820421.5,
+      "negative_rank_sum": 962794.5,
+      "statistic": 820421.5,
+      "z": -3.0047596924858775,
+      "p_value_two_sided": 0.0026579075273661023
+    },
     "positive_delta_share": 0.2861427714457109,
     "negative_delta_share": 0.28014397120575885,
     "zero_delta_share": 0.4337132573485303,
+    "primary_decision_rule": "Support requires mean paired delta NDCG@10 >= +0.02 and a paired bootstrap 95% confidence interval entirely above 0.00.",
     "preregistered_decision_rule_result": "not_supported"
   },
   "category_delta_summary": [

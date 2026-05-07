@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "run_id": "full-suite-20260507",
+  "repository": "https://github.com/Jbetts05/semantic-query-experiment",
+  "preregistration": {
+    "path": "docs/preregistration.md",
+    "created_commit": "fbfda1673e8a72e56ced615b5427428c30ca58b1",
+    "last_prerun_commit_touching_file": "6d6e179bf9c02e35d88727a1a398c644fc6b4b47"
+  },
+  "azure": {
+    "subscription": "556dc8cb-5da1-41d7-8a10-1be2cd6de16e",
+    "resource_group": "rg-semantic-query-experiment",
+    "region": "swedencentral",
+    "search_service": "semqry-search-556dc8sc",
+    "search_index": "semantic-query-gxp-8fcc73ca-azure-openai-text-embedding-3-large-text-embedding-3-large-2024-10-21-3072",
+    "ai_services_resource": "semqry-ai-556dc8sc"
+  },
+  "models": {
+    "embedding": {
+      "deployment": "text-embedding-3-large",
+      "model": "text-embedding-3-large",
+      "version": "1",
+      "api_version": "2024-10-21",
+      "dimensions": 3072,
+      "sku": "Standard",
+      "capacity": 10
+    },
+    "generation_fallback": {
+      "deployment": "gpt-5-4",
+      "model": "gpt-5.4",
+      "version": "2026-03-05",
+      "sku": "GlobalStandard",
+      "capacity": 10
+    }
+  },
+  "commands": {
+    "generate_data": "uv run semqry-generate-data --chunk-count 10000 --seed 20260507",
+    "index_data": "uv run semqry-index-data --embedding-mode azure-openai --azure-openai-endpoint <redacted> --azure-openai-key <redacted> --endpoint <redacted> --admin-key <redacted> --upload --batch-size 50 --embedding-batch-size 8",
+    "run_experiment": "uv run semqry-run --search-endpoint <redacted> --search-admin-key <redacted> --azure-openai-endpoint <redacted> --azure-openai-key <redacted> --run-id full-suite-20260507 --output reports\\runs\\full-suite\\results.jsonl --query-embedding-batch-size 8",
+    "render_report": "uv run semqry-report --results reports\\runs\\full-suite\\results.jsonl --output-dir reports\\final",
+    "statistical_summary": "uv run semqry-stats --metrics reports\\final\\metrics.json --queries data\\queries\\query-suite.jsonl --output reports\\final\\statistical-summary.json --bootstrap-seed 20260507 --bootstrap-iterations 5000"
+  },
+  "artifacts": {
+    "source_facts": "data/generated/source-facts.jsonl",
+    "corpus_chunks": "data/generated/corpus-chunks.jsonl",
+    "query_suite": "data/queries/query-suite.jsonl",
+    "relevance_labels": "data/labels/relevance-labels.jsonl",
+    "corpus_manifest": "reports/data-generation/corpus-manifest.json",
+    "index_schema": "reports/index/index-schema.json",
+    "metrics": "reports/final/metrics.json",
+    "statistical_summary": "reports/final/statistical-summary.json",
+    "whitepaper": "reports/final/whitepaper.md",
+    "raw_ranked_results_local_only": "reports/runs/full-suite/results.jsonl"
+  },
+  "scale": {
+    "indexed_chunks": 10002,
+    "queries": 3334,
+    "search_arms": 6,
+    "ranked_result_records": 1000200
+  },
+  "notes": [
+    "Secrets and data-plane keys are redacted and must not be committed.",
+    "The raw ranked results file is intentionally excluded from git because it is about 239 MB."
+  ]
+}
