@@ -138,7 +138,7 @@ class AzureOpenAIEmbedder:
                     parsed: Any = json.loads(response.read().decode("utf-8"))
                     return cast(dict[str, object], parsed)
             except urllib.error.HTTPError as error:
-                if error.code not in {429, 500, 502, 503, 504} or attempt == 4:
+                if error.code not in {404, 429, 500, 502, 503, 504} or attempt == 4:
                     detail = error.read().decode("utf-8", errors="replace")
                     raise RuntimeError(
                         f"Embedding request failed: {error.code} {detail}"
