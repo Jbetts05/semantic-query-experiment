@@ -16,7 +16,7 @@
     <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
       <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8" />
     </marker>
-    <marker id="arrowhead-gold" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+    <marker id="arrowhead-gold" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="270">
       <path d="M0,0 L0,6 L9,3 z" fill="#f59e0b" />
     </marker>
   </defs>
@@ -42,5 +42,5 @@
   <text class="small" x="844" y="143">MRR</text>
   <rect class="accent" x="300" y="184" width="250" height="46" />
   <text class="text" x="328" y="214">semantic_query intent</text>
-  <path class="intent" d="M550 207 C620 207, 615 154, 638 151" fill="none" />
+  <path class="intent" d="M550 207 C610 207, 640 190, 640 152" fill="none" />
 </svg>
