@@ -1,0 +1,88 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "semantic-query-experiment"
+version = "0.1.0"
+description = "A reproducible experiment for evaluating Azure AI Search semantic_query."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "MIT" }
+authors = [
+  { name = "Josh Betts", email = "joshbtts@gmail.com" }
+]
+dependencies = [
+  "jsonlines>=4.0.0",
+  "orjson>=3.10.18",
+  "pydantic>=2.11.0",
+  "pydantic-settings>=2.9.0",
+  "rich>=13.9.4",
+  "typer>=0.15.2",
+]
+
+[project.scripts]
+semqry = "semantic_query_experiment.cli:app"
+semqry-preflight = "semantic_query_experiment.commands.preflight:main"
+semqry-generate-data = "semantic_query_experiment.commands.generate_data:main"
+semqry-create-index = "semantic_query_experiment.commands.create_index:main"
+semqry-index-data = "semantic_query_experiment.commands.index_data:main"
+semqry-run = "semantic_query_experiment.commands.run_experiment:main"
+semqry-report = "semantic_query_experiment.commands.render_report:main"
+semqry-teardown = "semantic_query_experiment.commands.teardown:main"
+
+[dependency-groups]
+dev = [
+  "pre-commit>=4.2.0",
+  "pyright>=1.1.400",
+  "pytest>=8.3.5",
+  "pytest-cov>=6.1.1",
+  "ruff>=0.11.8",
+]
+azure = [
+  "azure-identity>=1.21.0",
+  "azure-search-documents>=11.6.0,<13.0.0",
+  "openai>=1.76.0",
+]
+report = [
+  "jinja2>=3.1.6",
+  "matplotlib>=3.10.1",
+  "pandas>=2.2.3",
+  "seaborn>=0.13.2",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/semantic_query_experiment"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+[tool.pytest.ini_options]
+addopts = "-q --strict-markers --strict-config"
+testpaths = ["tests"]
+
+[tool.pyright]
+pythonVersion = "3.12"
+typeCheckingMode = "strict"
+include = ["src"]
+exclude = ["data", "reports", ".venv"]
+reportMissingTypeStubs = false
+
+[tool.coverage.run]
+branch = true
+source = ["semantic_query_experiment"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true

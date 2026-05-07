@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/semantic-query-experiment/query-spec.schema.json",
+  "title": "QuerySpec",
+  "type": "object",
+  "required": ["schema_version", "query_id", "category", "search_text", "semantic_intent", "expected_document_ids"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "query_id": { "type": "string" },
+    "category": { "type": "string" },
+    "search_text": { "type": "string" },
+    "semantic_intent": { "type": "string" },
+    "expected_document_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false
+}

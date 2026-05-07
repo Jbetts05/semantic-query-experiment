@@ -1,0 +1,18 @@
+name: Teardown placeholder
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: Type "teardown semantic-query-experiment" to confirm.
+        required: true
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirm placeholder only
+        run: |
+          test "${{ github.event.inputs.confirmation }}" = "teardown semantic-query-experiment"
+          echo "Teardown is intentionally not wired in phase 1."
+          echo "TODO: add safe Azure deletion after deployment automation exists."

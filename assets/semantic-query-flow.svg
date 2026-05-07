@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="260" viewBox="0 0 960 260" role="img" aria-labelledby="title desc">
+  <title id="title">Semantic query experiment flow</title>
+  <desc id="desc">A static diagram showing the semantic query experiment flow.</desc>
+  <rect width="960" height="260" fill="#020617" rx="18" />
+  <g fill="#0f172a" stroke="#38bdf8" stroke-width="2">
+    <rect x="34" y="58" width="160" height="92" rx="14" />
+    <rect x="294" y="58" width="160" height="92" rx="14" />
+    <rect x="554" y="58" width="170" height="92" rx="14" />
+    <rect x="824" y="58" width="102" height="92" rx="14" />
+  </g>
+  <g fill="#e2e8f0" font-family="system-ui, sans-serif" font-weight="600" font-size="18">
+    <text x="62" y="94">L1 retrieval</text>
+    <text x="320" y="94">Candidates</text>
+    <text x="590" y="94">Semantic L2</text>
+    <text x="846" y="94">Report</text>
+  </g>
+  <g fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="13">
+    <text x="54" y="124">keywords, filters,</text>
+    <text x="54" y="143">vectors, identifiers</text>
+    <text x="318" y="124">top 50 retrieved</text>
+    <text x="318" y="143">documents/chunks</text>
+    <text x="578" y="124">rerank, captions,</text>
+    <text x="578" y="143">answers</text>
+    <text x="844" y="124">NDCG</text>
+    <text x="844" y="143">MRR</text>
+  </g>
+  <g stroke="#38bdf8" stroke-width="3">
+    <line x1="202" y1="104" x2="286" y2="104" />
+    <line x1="462" y1="104" x2="546" y2="104" />
+    <line x1="732" y1="104" x2="816" y2="104" />
+  </g>
+  <rect x="300" y="184" width="250" height="46" rx="14" fill="#082f49" stroke="#7dd3fc" stroke-width="2" />
+  <text x="328" y="214" fill="#e2e8f0" font-family="system-ui, sans-serif" font-weight="600" font-size="18">semantic_query intent</text>
+  <path d="M550 207 C620 207, 615 154, 638 151" fill="none" stroke="#f59e0b" stroke-width="3" stroke-dasharray="8 7" />
+</svg>

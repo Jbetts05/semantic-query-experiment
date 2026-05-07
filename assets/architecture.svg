@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300" role="img" aria-labelledby="title desc">
+  <title id="title">Experiment architecture</title>
+  <desc id="desc">A high-level architecture for data generation, Azure AI Search indexing, experiment execution, and reporting.</desc>
+  <rect width="900" height="300" fill="#f8fafc" rx="18" />
+  <g fill="#ffffff" stroke="#2563eb" stroke-width="2">
+    <rect x="40" y="70" width="150" height="90" rx="12" />
+    <rect x="260" y="70" width="150" height="90" rx="12" />
+    <rect x="480" y="70" width="150" height="90" rx="12" />
+    <rect x="700" y="70" width="150" height="90" rx="12" />
+  </g>
+  <g fill="#0f172a" font-family="system-ui, sans-serif" font-weight="700" font-size="17">
+    <text x="70" y="108">Synthetic</text>
+    <text x="77" y="130">corpus</text>
+    <text x="296" y="108">Azure AI</text>
+    <text x="308" y="130">Search</text>
+    <text x="515" y="108">Runner</text>
+    <text x="507" y="130">and eval</text>
+    <text x="738" y="108">Report</text>
+    <text x="729" y="130">artifacts</text>
+  </g>
+  <g stroke="#2563eb" stroke-width="3">
+    <line x1="190" y1="115" x2="260" y2="115" />
+    <line x1="410" y1="115" x2="480" y2="115" />
+    <line x1="630" y1="115" x2="700" y2="115" />
+  </g>
+  <g fill="#475569" font-family="system-ui, sans-serif" font-size="14">
+    <text x="52" y="210">Generated JSONL, labels, and query specs are versioned.</text>
+    <text x="52" y="236">Azure provisioning is added after preflight, quota, and RBAC checks.</text>
+  </g>
+</svg>

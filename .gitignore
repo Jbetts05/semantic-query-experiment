@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.pyright/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# uv
+.venv/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Experiment artifacts
+data/generated/**
+data/labels/**
+data/queries/**
+reports/**
+!data/generated/.gitkeep
+!data/labels/.gitkeep
+!data/queries/.gitkeep
+!reports/.gitkeep
+
+# Azure / tooling
+.azure/
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+!.vscode/extensions.json

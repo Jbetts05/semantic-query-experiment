@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "name": "semantic-query-experiment",
+  "description": "Single-environment experiment configuration placeholder.",
+  "random_seed": 20260507,
+  "target_indexed_chunks_min": 10000,
+  "target_indexed_chunks_max": 20000,
+  "query_rewrite_enabled": false,
+  "candidate_regions": [
+    "eastus2",
+    "swedencentral",
+    "southcentralus",
+    "polandcentral"
+  ]
+}

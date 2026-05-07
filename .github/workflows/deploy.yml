@@ -1,0 +1,18 @@
+name: Deploy placeholder
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: Type "deploy semantic-query-experiment" to confirm.
+        required: true
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirm placeholder only
+        run: |
+          test "${{ github.event.inputs.confirmation }}" = "deploy semantic-query-experiment"
+          echo "Deployment is intentionally not wired in phase 1."
+          echo "TODO: add Azure preflight and Bicep deployment after review."

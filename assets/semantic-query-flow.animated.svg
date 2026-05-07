@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="260" viewBox="0 0 960 260" role="img" aria-labelledby="title desc">
+  <title id="title">Semantic query experiment flow</title>
+  <desc id="desc">A diagram showing base retrieval, candidate documents, separate semantic query intent, reranking, and metrics.</desc>
+  <style>
+    .box { fill: #0f172a; stroke: #38bdf8; stroke-width: 2; rx: 14; }
+    .accent { fill: #082f49; stroke: #7dd3fc; stroke-width: 2; rx: 14; }
+    .text { fill: #e2e8f0; font: 600 18px system-ui, sans-serif; }
+    .small { fill: #cbd5e1; font: 13px system-ui, sans-serif; }
+    .arrow { stroke: #38bdf8; stroke-width: 3; marker-end: url(#arrowhead); }
+    .intent { stroke: #f59e0b; stroke-width: 3; marker-end: url(#arrowhead-gold); stroke-dasharray: 8 7; animation: dash 2.8s linear infinite; }
+    .pulse { animation: pulse 2.4s ease-in-out infinite; transform-origin: center; }
+    @keyframes dash { to { stroke-dashoffset: -60; } }
+    @keyframes pulse { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowhead-gold" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f59e0b" />
+    </marker>
+  </defs>
+  <rect width="960" height="260" fill="#020617" rx="18" />
+  <rect class="box" x="34" y="58" width="160" height="92" />
+  <text class="text" x="62" y="94">L1 retrieval</text>
+  <text class="small" x="54" y="124">keywords, filters,</text>
+  <text class="small" x="54" y="143">vectors, identifiers</text>
+  <line class="arrow" x1="202" y1="104" x2="286" y2="104" />
+  <rect class="box" x="294" y="58" width="160" height="92" />
+  <text class="text" x="320" y="94">Candidates</text>
+  <text class="small" x="318" y="124">top 50 retrieved</text>
+  <text class="small" x="318" y="143">documents/chunks</text>
+  <line class="arrow" x1="462" y1="104" x2="546" y2="104" />
+  <rect class="accent pulse" x="554" y="58" width="170" height="92" />
+  <text class="text" x="590" y="94">Semantic L2</text>
+  <text class="small" x="578" y="124">rerank, captions,</text>
+  <text class="small" x="578" y="143">answers</text>
+  <line class="arrow" x1="732" y1="104" x2="816" y2="104" />
+  <rect class="box" x="824" y="58" width="102" height="92" />
+  <text class="text" x="846" y="94">Report</text>
+  <text class="small" x="844" y="124">NDCG</text>
+  <text class="small" x="844" y="143">MRR</text>
+  <rect class="accent" x="300" y="184" width="250" height="46" />
+  <text class="text" x="328" y="214">semantic_query intent</text>
+  <path class="intent" d="M550 207 C620 207, 615 154, 638 151" fill="none" />
+</svg>
