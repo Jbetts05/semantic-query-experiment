@@ -8,6 +8,7 @@
     .small { fill: #cbd5e1; font: 13px system-ui, sans-serif; }
     .arrow { stroke: #38bdf8; stroke-width: 3; marker-end: url(#arrowhead); }
     .intent { stroke: #f59e0b; stroke-width: 3; stroke-dasharray: 8 7; animation: dash 2.8s linear infinite; }
+    .intent-stem { stroke: #f59e0b; stroke-width: 3; stroke-linecap: round; }
     .intent-head { fill: #f59e0b; }
     .pulse { animation: pulse 2.4s ease-in-out infinite; transform-origin: center; }
     @keyframes dash { to { stroke-dashoffset: -60; } }
@@ -40,6 +41,7 @@
   <text class="small" x="844" y="143">MRR</text>
   <rect class="accent" x="300" y="184" width="250" height="46" />
   <text class="text" x="328" y="214">semantic_query intent</text>
-  <path class="intent" d="M550 207 C610 207, 640 190, 640 160" fill="none" />
+  <path class="intent" d="M550 207 C610 207, 640 190, 640 168" fill="none" />
+  <line class="intent-stem" x1="640" y1="168" x2="640" y2="160" />
   <polygon class="intent-head" points="640,145 632,160 648,160" />
 </svg>
