@@ -88,6 +88,8 @@ Each category contributes at least 100 questions:
 7. Short operational query: the query is brief and search-like.
 8. Caption and answer alignment: the best result must contain an extractive
    passage suitable for captions or answers.
+9. Temporal supersession: the query depends on effective dates, superseded
+   revisions, or "current versus obsolete" wording.
 
 ## Relevance labels
 
@@ -99,10 +101,21 @@ Labels are graded:
 - `1`: related context without the answer.
 - `0`: irrelevant or lexical trap.
 
-Primary labels come from structured source facts. LLM-assisted judging can be
-used only as a secondary quality check. If LLM judging is used, the model,
-prompt, temperature, seed where supported, and disagreement-resolution rule must
-be recorded in the run manifest.
+Primary labels come from structured source facts and measure
+generator-asserted fact coverage rather than open-ended human relevance. Each
+query must include at least two hard-negative documents that share product,
+site, identifier, jargon, or answer-like wording without containing the asserted
+answer-bearing fact.
+
+Before Azure indexing, the generated corpus must pass a local deterministic BM25
+difficulty check. The aggregate BM25 NDCG@10 should be below saturation and
+above floor, and category-level scores must be reported in the corpus manifest.
+This is a corpus-quality gate, not a pilot run or a result-bearing experiment
+arm.
+
+LLM-assisted judging can be used only as a secondary quality check. If LLM
+judging is used, the model, prompt, temperature, seed where supported, and
+disagreement-resolution rule must be recorded in the run manifest.
 
 ## Query and semantic intent fields
 
@@ -111,6 +124,7 @@ Each query spec stores:
 - `search_text`: the L1 retrieval string.
 - `semantic_intent`: the deterministic plain-language intent.
 - `expected_document_ids`: graded-relevance source documents/chunks.
+- `hard_negative_document_ids`: intentionally confusing non-answer chunks.
 
 The deterministic semantic intent is rendered from structured query facts using
 a fixed template per category. It is not rewritten after observing results.
@@ -158,7 +172,8 @@ Initial pinned settings:
 - Query rewrite: disabled for all primary and baseline arms.
 - Vector query `k`: `50`.
 - Result `top`: `50` for metric capture.
-- Chunking: 512 to 1,024 tokens with documented overlap, fixed before indexing.
+- Chunking: pre-chunked JSONL rows generated before indexing; chunk boundaries
+  are fixed in the corpus artifacts and not changed by Azure indexers.
 - Query concurrency for reported quality metrics: `1`.
 
 If quota or policy prevents the target model or API version from being used, an

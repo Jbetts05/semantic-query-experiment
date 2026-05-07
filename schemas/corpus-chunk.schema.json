@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/semantic-query-experiment/corpus-chunk.schema.json",
+  "title": "CorpusChunk",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "document_id",
+    "chunk_id",
+    "title",
+    "doc_type",
+    "product",
+    "site",
+    "keywords",
+    "text",
+    "source_fact_ids"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "document_id": { "type": "string" },
+    "chunk_id": { "type": "string" },
+    "title": { "type": "string" },
+    "doc_type": { "type": "string" },
+    "product": { "type": "string" },
+    "site": { "type": "string" },
+    "batch_id": { "type": ["string", "null"] },
+    "deviation_id": { "type": ["string", "null"] },
+    "sop_id": { "type": ["string", "null"] },
+    "keywords": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "text": { "type": "string" },
+    "source_fact_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "expected_answer_spans": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "is_hard_negative": { "type": "boolean", "default": false },
+    "hard_negative_for_query_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    }
+  },
+  "additionalProperties": false
+}

@@ -38,3 +38,7 @@ class ExperimentConfig(BaseModel):
 
 DEFAULT_CONFIG_PATH = Path("infra/config/experiment.json")
 SEARCH_FEATURE_REGIONS_PATH = Path("infra/config/search-feature-regions.json")
+
+
+def load_experiment_config(path: Path = DEFAULT_CONFIG_PATH) -> ExperimentConfig:
+    return ExperimentConfig.model_validate_json(path.read_text(encoding="utf-8"))

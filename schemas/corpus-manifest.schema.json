@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/semantic-query-experiment/corpus-manifest.schema.json",
+  "title": "CorpusManifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "seed",
+    "requested_chunk_count",
+    "actual_chunk_count",
+    "query_count",
+    "source_fact_count",
+    "category_counts",
+    "hard_negative_count",
+    "bm25_ndcg_at_10",
+    "bm25_ndcg_at_10_by_category",
+    "artifact_hashes"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "seed": { "type": "integer" },
+    "requested_chunk_count": { "type": "integer", "minimum": 1 },
+    "actual_chunk_count": { "type": "integer", "minimum": 1 },
+    "query_count": { "type": "integer", "minimum": 1 },
+    "source_fact_count": { "type": "integer", "minimum": 1 },
+    "category_counts": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 1 }
+    },
+    "hard_negative_count": { "type": "integer", "minimum": 1 },
+    "bm25_ndcg_at_10": { "type": "number", "minimum": 0, "maximum": 1 },
+    "bm25_ndcg_at_10_by_category": {
+      "type": "object",
+      "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 }
+    },
+    "artifact_hashes": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "additionalProperties": false
+}

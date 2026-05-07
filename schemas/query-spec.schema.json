@@ -10,10 +10,27 @@
     "category": { "type": "string" },
     "search_text": { "type": "string" },
     "semantic_intent": { "type": "string" },
+    "semantic_query_derivation": {
+      "type": "string",
+      "enum": ["identical", "deterministic", "llm"],
+      "default": "deterministic"
+    },
     "expected_document_ids": {
       "type": "array",
       "items": { "type": "string" },
       "minItems": 1
+    },
+    "hard_negative_document_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "filters": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["string", "number", "boolean", "null"]
+      },
+      "default": {}
     }
   },
   "additionalProperties": false

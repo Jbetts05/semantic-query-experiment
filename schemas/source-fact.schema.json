@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/semantic-query-experiment/source-fact.schema.json",
+  "title": "SourceFact",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "fact_id",
+    "gold_document_id",
+    "product",
+    "site",
+    "doc_type",
+    "primary_identifier",
+    "secondary_identifier",
+    "jargon_term",
+    "plain_language_term",
+    "answer",
+    "effective_date",
+    "superseded_identifier"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "fact_id": { "type": "string" },
+    "gold_document_id": { "type": "string" },
+    "product": { "type": "string" },
+    "site": { "type": "string" },
+    "doc_type": { "type": "string" },
+    "primary_identifier": { "type": "string" },
+    "secondary_identifier": { "type": "string" },
+    "jargon_term": { "type": "string" },
+    "plain_language_term": { "type": "string" },
+    "answer": { "type": "string" },
+    "effective_date": { "type": "string" },
+    "superseded_identifier": { "type": "string" }
+  },
+  "additionalProperties": false
+}

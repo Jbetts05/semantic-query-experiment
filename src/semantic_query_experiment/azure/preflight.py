@@ -16,6 +16,7 @@ from semantic_query_experiment.config import (
     SEARCH_FEATURE_REGIONS_PATH,
     ExperimentConfig,
     ModelTarget,
+    load_experiment_config,
 )
 
 
@@ -117,10 +118,6 @@ class PreflightPaths:
     config_path: Path = DEFAULT_CONFIG_PATH
     search_feature_regions_path: Path = SEARCH_FEATURE_REGIONS_PATH
     output_path: Path = Path("reports/preflight/preflight-result.json")
-
-
-def load_experiment_config(path: Path = DEFAULT_CONFIG_PATH) -> ExperimentConfig:
-    return ExperimentConfig.model_validate_json(path.read_text(encoding="utf-8"))
 
 
 def load_search_feature_allowlist(

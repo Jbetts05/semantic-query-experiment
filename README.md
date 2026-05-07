@@ -37,10 +37,11 @@ This repo is being built in phases. The current foundation includes:
 - Python source and test layout.
 - schema-first artifact models.
 - validation workflow scaffolding.
-- safe, non-provisioning placeholders for Azure workflows.
+- read-only Azure preflight checks and Bicep infrastructure.
+- deterministic synthetic data generation with hard negatives and graded labels.
 - initial diagrams and conventions.
 
-No Azure resources are deployed by the placeholder workflows in this phase.
+No Azure resources are deployed without an explicit workflow-dispatch confirmation.
 
 ## Quickstart
 
@@ -54,11 +55,12 @@ uv run pyright
 uv run pytest
 ```
 
-Run the placeholder CLI:
+Run the local CLIs:
 
 ```powershell
 uv run semqry --help
 uv run semqry-preflight
+uv run semqry-generate-data --chunk-count 270
 ```
 
 ## Experiment configuration
