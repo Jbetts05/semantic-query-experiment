@@ -28,6 +28,23 @@ whitepaper without committing transient caches or very large raw result dumps.
 | `../../data/generated/source-facts.jsonl` | Structured facts used to generate the synthetic corpus and labels. |
 | `../../data/generated/corpus-chunks.jsonl` | Synthetic chunks uploaded to Azure AI Search. |
 
+## Metric notes
+
+For detailed formulas and reproduction commands, read
+[`../../docs/methodology.md`](../../docs/methodology.md) alongside
+[`whitepaper.md`](whitepaper.md).
+
+- `NDCG@10` is the primary ranking-quality metric; `NDCG@3` is the stricter
+  early-rank variant. Both use graded relevance and rank discounting.
+- `MRR@10` measures how early the first exact answer-bearing document appears.
+- `Recall@50` measures candidate coverage, while `Hit@k` measures whether an
+  exact answer-bearing document appears within the top `k`.
+- The primary delta is deterministic `semantic_query` NDCG@10 minus the
+  identical-control NDCG@10. Bootstrap confidence intervals bound uncertainty
+  around that delta, and the Wilcoxon signed-rank p-value is a secondary paired
+  shift test.
+- Latency is reported as directional mean Search request timing only.
+
 ## Raw full-run results
 
 The full ranked output is intentionally not committed directly:

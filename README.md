@@ -41,6 +41,11 @@ primary hypothesis on aggregate, but category-level analysis showed it helped
 fielded/filter-style and long compliance queries while hurting identifier and
 temporal queries.
 
+Read the methodology alongside the whitepaper. The whitepaper gives the
+professional narrative; [`docs/methodology.md`](docs/methodology.md) is the
+important companion that defines the request shapes, metric formulas,
+statistical tests, and reproduction commands.
+
 Start with:
 
 - [`docs/methodology.md`](docs/methodology.md) for the detailed technical
@@ -60,6 +65,18 @@ Start with:
 The raw full-run ranked results file is not committed because it is about 239 MB;
 publish it as a compressed GitHub Release asset if external reviewers need the
 complete record-level output.
+
+Metric quick guide: **NDCG@10** is the primary ranking-quality metric; **NDCG@3**
+is the stricter early-rank version; **MRR@10** asks how early the first exact
+answer-bearing document appears; **Recall@50** checks candidate coverage;
+**Hit@k** asks whether an exact answer-bearing document appears within the top
+`k`; latency is directional only because the preregistered percentile protocol
+was not run. The paired bootstrap CI, Wilcoxon signed-rank p-value, and primary
+NDCG@10 delta are paired query-level uncertainty and effect-size views: the
+delta is deterministic `semantic_query` minus identical control, the bootstrap
+CI bounds uncertainty around that delta, and Wilcoxon is a secondary paired
+shift test. Details are in
+[`docs/methodology.md`](docs/methodology.md).
 
 ## Repository status
 

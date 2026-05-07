@@ -51,6 +51,22 @@ These examples explain the main result pattern. In fielded and long-form queries
 
 The aggregate metrics show that semantic ranking was valuable in this corpus, while the vector-only arm was weak and hybrid without semantic ranking underperformed BM25 on ranking quality. That hybrid-vs-BM25 inversion is an important caveat: the vector representation and fusion settings were not independently tuned for maximum retrieval quality. The controlled comparison remains useful because the primary arms used the same retrieval setup and differed only in semantic-ranking query text.
 
+### How to read the metrics and statistical tests
+
+The detailed implementation is in [`../../docs/methodology.md`](../../docs/methodology.md); this section summarizes how professionals should interpret the measures used in the final artifacts.
+
+| Metric or statistic | What it is and how it is calculated | How to use it in this experiment |
+| --- | --- | --- |
+| NDCG@10 | Normalized Discounted Cumulative Gain over the top 10 results. Relevance is graded, with `gain = 2^relevance - 1`; rank discount is `log2(rank + 1)`; the result is normalized by the ideal ordering for that query. | Primary quality metric. Higher means highly relevant answer-bearing and supporting documents are ranked closer to the top. The predefined decision rule used mean paired NDCG@10 delta. |
+| NDCG@3 | The same NDCG calculation, limited to the top 3 results. | A stricter early-rank view. Use it when the user experience shows only a few results or when the RAG system consumes a very small context set. |
+| MRR@10 | Mean Reciprocal Rank of the first exact answer-bearing document in the top 10. For each query, the score is `1 / rank` for the first result with `relevance == 3`, or `0` if none appears in the top 10; scores are averaged over queries. | Measures how quickly the first exact answer appears. It complements NDCG by focusing on the first answer-bearing hit rather than all graded relevance in the ranked list. |
+| Recall@50 | Fraction of all labeled relevant documents with `relevance > 0` retrieved within the top 50. | Candidate coverage check, not an ordering metric. In this design it helps distinguish retrieval-stage misses from semantic-ranker ordering differences. |
+| Hit@1, Hit@3, Hit@5, Hit@10 | Binary query-level indicators for whether at least one exact answer-bearing document (`relevance == 3`) appears in the top `k`; averaged over queries. | Measures discoverability at operational cutoffs. Hit@1 is closest to immediate answer quality; higher cutoffs show whether the right document is nearby even if not ranked first. Hit@3 is computed in the artifacts even when not shown in every summary table. |
+| Mean latency ms | Mean elapsed Search request time for each query-arm request in the run. | Directional only. The preregistered warmup and p50/p95/p99 percentile protocol was not followed, so these numbers should not be used for capacity planning or service-level objectives. |
+| Mean NDCG@10 delta | For each query, `semantic_query` deterministic NDCG@10 minus identical-control NDCG@10, averaged across paired queries. | Measures the primary treatment effect. Positive values favor separate semantic intent; negative values favor the identical-control/conventional semantic ranking arm. |
+| Bootstrap 95% CI | Paired nonparametric bootstrap over query-level NDCG@10 deltas, using seed `20260507` and 5,000 iterations. | Quantifies uncertainty around the mean paired delta without assuming a parametric distribution. The preregistered rule required the lower bound to be above zero. |
+| Wilcoxon signed-rank p-value | Secondary paired nonparametric test over per-query deltas. Zero deltas are excluded; the run used a normal approximation with continuity correction. | Sensitivity check for whether paired deltas are systematically shifted from zero. It is not the decision rule; here it indicates a statistically detectable shift, but the shift is negative, so it does not support the hypothesis. |
+
 | Arm | NDCG@10 | NDCG@3 | MRR@10 | Recall@50 | Hit@1 | Hit@5 | Hit@10 | Mean latency ms |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | `hybrid_semantic` | **0.3698** | **0.3397** | **0.3822** | 0.4505 | **0.3503** | 0.4169 | 0.4931 | 582.8 |
