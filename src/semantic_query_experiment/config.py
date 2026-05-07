@@ -12,6 +12,7 @@ class ModelTarget(BaseModel):
     name: str
     version: str
     sku: str
+    deployment_name: str
     capacity: int = Field(ge=1)
     dimensions: int | None = None
 

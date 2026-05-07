@@ -14,13 +14,15 @@
     "name": "text-embedding-3-large",
     "version": "1",
     "sku": "Standard",
+    "deployment_name": "text-embedding-3-large",
     "dimensions": 3072,
     "capacity": 10
   },
   "generation_model": {
-    "name": "gpt-5.5",
-    "version": "2026-04-24",
+    "name": "gpt-5.4",
+    "version": "2026-03-05",
     "sku": "GlobalStandard",
+    "deployment_name": "gpt-5-4",
     "capacity": 10
   },
   "candidate_regions": [

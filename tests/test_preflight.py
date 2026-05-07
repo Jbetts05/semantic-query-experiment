@@ -22,7 +22,7 @@ class FakeRunner:
                     "skus": [{"name": "Standard"}],
                 },
                 {
-                    "model": {"name": "gpt-5.5"},
+                    "model": {"name": "gpt-5.4"},
                     "skus": [{"name": "GlobalStandard"}],
                 },
             ]
