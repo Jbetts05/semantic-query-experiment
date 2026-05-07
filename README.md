@@ -80,6 +80,8 @@ variables. Use `.env.example` as the template and never commit `.env`.
   and query rewrite state.
 - Reports must include raw artifacts, paired metrics, confidence intervals, and
   failure cases.
+- The experiment preregistration is maintained in
+  [`docs/preregistration.md`](docs/preregistration.md).
 
 ## Diagrams
 
