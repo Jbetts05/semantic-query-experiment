@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "seed": 20260507,
+  "requested_chunk_count": 10000,
+  "actual_chunk_count": 10002,
+  "query_count": 3334,
+  "source_fact_count": 3334,
+  "category_counts": {
+    "acronym_expansion": 371,
+    "caption_answer": 370,
+    "fielded_filter": 371,
+    "id_lookup": 371,
+    "lexical_trap": 370,
+    "long_compliance": 370,
+    "short_operational": 370,
+    "synonym_swap": 371,
+    "temporal_supersession": 370
+  },
+  "hard_negative_count": 6668,
+  "bm25_ndcg_at_10": 0.3178,
+  "bm25_ndcg_at_10_by_category": {
+    "acronym_expansion": 0.005717,
+    "caption_answer": 0.736364,
+    "fielded_filter": 0.097789,
+    "id_lookup": 1.0,
+    "lexical_trap": 0.736364,
+    "long_compliance": 0.042175,
+    "short_operational": 0.017152,
+    "synonym_swap": 0.005003,
+    "temporal_supersession": 0.219639
+  },
+  "artifact_hashes": {
+    "source_facts": "daefe2277bdd201bc3d4a38f2c09969a44250936a9e87b0f032e77111fb35cae",
+    "chunks": "b587487097563b8fb301e683babd91b778cf511514bcc8048b42d154dd3f87b0",
+    "queries": "522b7e5ee1380d8e01b6be9ef37dd171a4be9b7517023b42710e8e163fb9dde1",
+    "labels": "6d73c256ded2a11309373a47cafeab9266de4c43e3841601278cc03c794ef72c"
+  }
+}

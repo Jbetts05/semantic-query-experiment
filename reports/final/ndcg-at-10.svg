@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="360" viewBox="0 0 980 360" role="img" aria-label="NDCG at 10 by arm">
+<rect width="980" height="360" fill="#0b1020"/>
+<text x="32" y="42" fill="#f8fafc" font-family="Segoe UI, Arial" font-size="24" font-weight="700">NDCG@10 by experiment arm</text>
+<text x="32" y="98" fill="#cbd5e1" font-family="Segoe UI, Arial" font-size="13">bm25</text>
+<rect x="260" y="78" width="640" height="28" rx="8" fill="#1e293b"/>
+<rect x="260" y="78" width="180" height="28" rx="8" fill="#38bdf8"/>
+<text x="916" y="98" fill="#f8fafc" font-family="Segoe UI, Arial" font-size="14">0.282</text>
+<text x="32" y="144" fill="#cbd5e1" font-family="Segoe UI, Arial" font-size="13">hybrid</text>
+<rect x="260" y="124" width="640" height="28" rx="8" fill="#1e293b"/>
+<rect x="260" y="124" width="106" height="28" rx="8" fill="#38bdf8"/>
+<text x="916" y="144" fill="#f8fafc" font-family="Segoe UI, Arial" font-size="14">0.166</text>
+<text x="32" y="190" fill="#cbd5e1" font-family="Segoe UI, Arial" font-size="13">hybrid_semantic</text>
+<rect x="260" y="170" width="640" height="28" rx="8" fill="#1e293b"/>
+<rect x="260" y="170" width="236" height="28" rx="8" fill="#38bdf8"/>
+<text x="916" y="190" fill="#f8fafc" font-family="Segoe UI, Arial" font-size="14">0.370</text>
+<text x="32" y="236" fill="#cbd5e1" font-family="Segoe UI, Arial" font-size="13">hybrid_semantic_query_control</text>
+<rect x="260" y="216" width="640" height="28" rx="8" fill="#1e293b"/>
+<rect x="260" y="216" width="236" height="28" rx="8" fill="#38bdf8"/>
+<text x="916" y="236" fill="#f8fafc" font-family="Segoe UI, Arial" font-size="14">0.370</text>
+<text x="32" y="282" fill="#cbd5e1" font-family="Segoe UI, Arial" font-size="13">hybrid_semantic_query_deterministic</text>
+<rect x="260" y="262" width="640" height="28" rx="8" fill="#1e293b"/>
+<rect x="260" y="262" width="221" height="28" rx="8" fill="#38bdf8"/>
+<text x="916" y="282" fill="#f8fafc" font-family="Segoe UI, Arial" font-size="14">0.346</text>
+<text x="32" y="328" fill="#cbd5e1" font-family="Segoe UI, Arial" font-size="13">vector</text>
+<rect x="260" y="308" width="640" height="28" rx="8" fill="#1e293b"/>
+<rect x="260" y="308" width="31" height="28" rx="8" fill="#38bdf8"/>
+<text x="916" y="328" fill="#f8fafc" font-family="Segoe UI, Arial" font-size="14">0.049</text>
+</svg>

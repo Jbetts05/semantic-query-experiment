@@ -29,9 +29,38 @@ The synthetic corpus uses pharmaceutical manufacturing quality and GxP
 compliance documents because the domain naturally contains identifiers, jargon,
 acronyms, synonyms, fielded constraints, and answer-bearing prose.
 
+## Final experiment results
+
+The full experiment has been run and the curated evidence bundle is tracked in
+[`reports/final`](reports/final).
+
+Key result: the strongest aggregate arm was hybrid retrieval with conventional
+semantic ranking, using the same query text for retrieval and semantic ranking.
+The separate rule-based `semantic_query` arm did **not** support the predefined
+primary hypothesis on aggregate, but category-level analysis showed it helped
+fielded/filter-style and long compliance queries while hurting identifier and
+temporal queries.
+
+Start with:
+
+- [`reports/final/whitepaper.md`](reports/final/whitepaper.md) for the
+  professional summary.
+- [`reports/final/report.md`](reports/final/report.md) for the concise generated
+  report.
+- [`reports/final/statistical-summary.json`](reports/final/statistical-summary.json)
+  for the paired bootstrap CI and decision-rule result.
+- [`reports/final/metrics.json`](reports/final/metrics.json) for aggregate,
+  category, and per-query metrics.
+- [`docs/preregistration.md`](docs/preregistration.md) for the predefined primary
+  contrast and decision rule.
+
+The raw full-run ranked results file is not committed because it is about 239 MB;
+publish it as a compressed GitHub Release asset if external reviewers need the
+complete record-level output.
+
 ## Repository status
 
-This repo is being built in phases. The current foundation includes:
+The current foundation includes:
 
 - `uv` package management.
 - Python source and test layout.
@@ -39,9 +68,12 @@ This repo is being built in phases. The current foundation includes:
 - validation workflow scaffolding.
 - read-only Azure preflight checks and Bicep infrastructure.
 - deterministic synthetic data generation with hard negatives and graded labels.
+- Azure AI Search indexing and query-running pipelines.
+- curated final metrics, whitepaper, chart, and supporting evidence artifacts.
 - initial diagrams and conventions.
 
-No Azure resources are deployed without an explicit workflow-dispatch confirmation.
+No additional Azure resources are deployed without an explicit workflow-dispatch
+confirmation.
 
 ## Quickstart
 
@@ -94,6 +126,6 @@ and CSS animation in SVG, but scripts are intentionally not used.
 
 ## Teardown
 
-Cost-bearing infrastructure will be added in a later phase. The `teardown`
-workflow is currently a safe placeholder. When provisioning is implemented,
-teardown instructions and confirmation gates will be kept prominent.
+Cost-bearing infrastructure for this experiment is recorded in
+[`docs/azure-resources.md`](docs/azure-resources.md). Use the teardown command or
+workflow only when the final artifacts you need have been preserved.

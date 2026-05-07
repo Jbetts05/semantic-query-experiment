@@ -23,10 +23,29 @@ data/generated/**
 data/labels/**
 data/queries/**
 reports/**
+!data/generated/
 !data/generated/.gitkeep
+!data/generated/source-facts.jsonl
+!data/generated/corpus-chunks.jsonl
+!data/labels/
 !data/labels/.gitkeep
+!data/labels/relevance-labels.jsonl
+!data/queries/
 !data/queries/.gitkeep
+!data/queries/query-suite.jsonl
+!reports/
 !reports/.gitkeep
+!reports/final/
+!reports/final/README.md
+!reports/final/whitepaper.md
+!reports/final/report.md
+!reports/final/metrics.json
+!reports/final/statistical-summary.json
+!reports/final/ndcg-at-10.svg
+!reports/data-generation/
+!reports/data-generation/corpus-manifest.json
+!reports/index/
+!reports/index/index-schema.json
 
 # Azure / tooling
 .azure/
