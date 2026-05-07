@@ -7,7 +7,8 @@
     .text { fill: #e2e8f0; font: 600 18px system-ui, sans-serif; }
     .small { fill: #cbd5e1; font: 13px system-ui, sans-serif; }
     .arrow { stroke: #38bdf8; stroke-width: 3; marker-end: url(#arrowhead); }
-    .intent { stroke: #f59e0b; stroke-width: 3; marker-end: url(#arrowhead-gold); stroke-dasharray: 8 7; animation: dash 2.8s linear infinite; }
+    .intent { stroke: #f59e0b; stroke-width: 3; stroke-dasharray: 8 7; animation: dash 2.8s linear infinite; }
+    .intent-head { fill: #f59e0b; }
     .pulse { animation: pulse 2.4s ease-in-out infinite; transform-origin: center; }
     @keyframes dash { to { stroke-dashoffset: -60; } }
     @keyframes pulse { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
@@ -15,9 +16,6 @@
   <defs>
     <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
       <path d="M0,0 L0,6 L9,3 z" fill="#38bdf8" />
-    </marker>
-    <marker id="arrowhead-gold" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="270">
-      <path d="M0,0 L0,6 L9,3 z" fill="#f59e0b" />
     </marker>
   </defs>
   <rect width="960" height="260" fill="#020617" rx="18" />
@@ -42,5 +40,6 @@
   <text class="small" x="844" y="143">MRR</text>
   <rect class="accent" x="300" y="184" width="250" height="46" />
   <text class="text" x="328" y="214">semantic_query intent</text>
-  <path class="intent" d="M550 207 C610 207, 640 190, 640 152" fill="none" />
+  <path class="intent" d="M550 207 C610 207, 640 190, 640 160" fill="none" />
+  <polygon class="intent-head" points="640,145 632,160 648,160" />
 </svg>
