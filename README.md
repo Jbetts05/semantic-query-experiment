@@ -84,6 +84,8 @@ variables. Use `.env.example` as the template and never commit `.env`.
   failure cases.
 - The experiment preregistration is maintained in
   [`docs/preregistration.md`](docs/preregistration.md).
+- Current Azure resource names are recorded in
+  [`docs/azure-resources.md`](docs/azure-resources.md).
 
 ## Diagrams
 

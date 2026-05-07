@@ -30,6 +30,7 @@ class ExperimentConfig(BaseModel):
     query_rewrite_enabled: bool
     search_api_version: str
     search_sku: str
+    search_index_base_name: str
     search_semantic_configuration: str
     embedding_model: ModelTarget
     generation_model: ModelTarget

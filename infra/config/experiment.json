@@ -8,6 +8,7 @@
   "query_rewrite_enabled": false,
   "search_api_version": "2025-09-01",
   "search_sku": "basic",
+  "search_index_base_name": "semantic-query-gxp",
   "search_semantic_configuration": "gxp-semantic-config",
   "embedding_model": {
     "name": "text-embedding-3-large",
